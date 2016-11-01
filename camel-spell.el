@@ -1,3 +1,45 @@
+;;; camel-spell.el --- spell check camelCase words -*- lexical-binding: t -*-
+
+;; Copyright (C) 2016 Joe Schafer
+
+;; Author: Joe Schafer <joe@jschaf.com>
+;; Maintainer:  Joe Schafer <joe@jschaf.com>
+;; Created: 2016-10-30
+;; URL: http://github.com/jschaf/camel-spell
+;; Version:  0.01
+;; Package-Requires: ((cl-lib "0.5") (emacs "24"))
+;; Keywords: convenience
+
+;; This file is NOT part of GNU Emacs.
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License
+;; as published by the Free Software Foundation; either version 2
+;; of the License, or (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;;; Installation:
+;;
+;; Place camel-spell.el on your `load-path' by adding this to your
+;; `user-init-file', usually ~/.emacs or ~/.emacs.d/init.el
+;;
+;; (add-to-list 'load-path "~/dir/to-camel-spell")
+;;
+;; Load the code:
+;;
+;;
+;; (autoload 'camel-spell-mode "camel-spell" "Spell check camel case words." nil)
+;;
+;; M-x `camel-spell-mode' to enable spell checking of camel case words.
+
+;;; Commentary:
+;;
+;; The most recent code is always at http://github.com/jschaf/camel-spell
+
 (defvar-local camel-spell-sub-word-list '()
   "A buffer-local stack to hold parts of a camel cased word to check.
 For example, the word \"myCamelCase\" should populate the list like so:

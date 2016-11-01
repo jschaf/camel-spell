@@ -2,6 +2,7 @@
 
 Spell check camelcased words with the normal ispell and flyspell commands.
 
+
 <!-- # Installation -->
 
 <!-- ## With MELPA -->
@@ -13,7 +14,7 @@ Spell check camelcased words with the normal ispell and flyspell commands.
 <!--              '("melpa" . "https://melpa.org/packages/") t) -->
 <!-- ``` -->
 
-<!-- Then install esup: -->
+<!-- Then install camel-spell: -->
 
 <!-- <kbd>M-x package-install RET camel-spell RET</kbd> -->
 
