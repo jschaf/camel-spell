@@ -40,6 +40,8 @@
 ;;
 ;; The most recent code is always at http://github.com/jschaf/camel-spell
 
+(require 's)
+
 (defvar-local camel-spell-sub-word-list '()
   "A buffer-local stack to hold parts of a camel cased word to check.
 For example, the word \"myCamelCase\" should populate the list like so:
@@ -63,6 +65,33 @@ If `camel-spell-sub-word-list' is nil, then return nil."
 ;; Cased, Word].  Adjust the start and end locations accordingly.  Return the
 ;; first entry and save the other two entries in the word queue.
 
+(defun camel-spell--get-sub-word (str position)
+  "Returns a subword pair in STR starting at POSITION
+A sub-word is a like foo, Foo or HTML.  It's paired with the end
+position of the STR exclusive."
+  (if (< position (length str))
+      (if (s-uppercase? (aref str position))
+
+          (cond
+           ;; There's another upper-case character after the first one.
+           ((>= (1+ position) (length str))
+            (cl-loop for index from position to (1- (length string))
+                     collect (aref )
+                     )
+            )
+
+           )
+        ;; if the next char is an upper case, grab all the upper case chars
+        ;; else grab as many lower case chars as possible
+
+        )
+
+    '("" (1+ position))
+    )
+
+
+  )
+
 (defun camel-spell-break-string (str)
   "FooBar => '(\"foo\" \"Bar\")"
   (let ((case-fold-search nil))
@@ -78,7 +107,6 @@ one word info."
   (when (car-safe word-info)
     (let* ((original-string (nth 0 word-info))
            (start-point (nth 1 word-info))
-           (case-fold-search nil)
            (sub-words (camel-spell-break-string original-string))
            result)
       (dolist (word sub-words result)
@@ -100,3 +128,6 @@ one word info."
 
 (advice-add #'flyspell-get-word :around #'camel-spell-get-word-advisor)
 
+
+(provide 'camel-spell)
+;;; camel-spell.el ends here
