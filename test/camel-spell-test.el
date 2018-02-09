@@ -14,14 +14,15 @@
 (ert-deftest camel-spell-test/break-string ()
   "Test `camel-spell-break-string'."
   (cl-loop for (input expected) in
-           '(("" "")
-             ("a" "a")
-             ("abc" "abc")
-             ("aB" '("a" "B"))
-             ("aBB" '("a" "BB"))
-             ("fooBarBaz" '("foo" "Bar" "Baz"))
-             ("fooBarHTML" '("foo" "Bar" "HTML"))
-             ("FOObarBaz" '("FOO" "bar" "Baz")))
+           '(("" nil)
+             ("a" ("a"))
+             ("abc" ("abc"))
+             ("aB" ("a" "B"))
+             ("aBB" ("a" "BB"))
+             ("fooBarBaz" ("foo" "Bar" "Baz"))
+             ("fooHTMLBaz" ("foo" "HTML" "Baz"))
+             ("fooBarHTML" ("foo" "Bar" "HTML"))
+             ("FOObarBaz" ("FOO" "bar" "Baz")))
            do
            (should (equal (camel-spell-break-string input) expected))))
 
